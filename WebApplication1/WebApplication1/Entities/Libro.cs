@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace BibliotecaAPI.Entities
 {
@@ -9,8 +8,7 @@ namespace BibliotecaAPI.Entities
         [Required]
         [StringLength(150, ErrorMessage = "El campo {0} debe tener {1} caracteres o menos")]
         public required string Título { get; set; }
-        public int AutorId { get; set; } 
-        public Autor? Autor { get; set; }
+        public List<AutorLibro> Autores { get; set; } = [];
 
         public List<Comentario> Comentarios { get; set; } = [];
     }

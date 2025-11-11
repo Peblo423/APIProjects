@@ -22,12 +22,26 @@ namespace BibliotecaAPI.Utilidades
 
             #region MapeoLibros
             // De Libro a LibroDto
-            CreateMap<Libro, LibroDto>()
-                .ForMember(dto => dto.AutorNombre, config => 
-                config.MapFrom(ent => MapNombreYApellidoAutor(ent.Autor!)));
+            //CreateMap<Libro, LibroDto>()
+            //    .ForMember(dto => dto.AutorNombre, config =>
+            //    config.MapFrom(ent => MapNombreYApellidoAutor(ent.Autor!)));
 
             // De LibroCreacionDto a Libro
-            CreateMap<LibroCreacionDto, Libro>();
+            CreateMap<LibroCreacionDto, Libro>()
+
+                // Regla especial para el miembro 'Autores' (de la entidad Libro)
+                .ForMember( ent => ent.Autores,
+
+                    // "La configuración es: TOMA LOS DATOS DESDE..."
+                    config => config.MapFrom(dto =>
+
+                        // "...el 'dto.AutoresIds' (la List<int>)..."
+                        dto.AutoresIds.Select(id =>
+
+                        // "...y por CADA 'id' en esa lista, 
+                        //    crea un NUEVO objeto 'AutorLibro' 
+                        //    y pon ese 'id' en su propiedad 'AutorId'."
+                        new AutorLibro { AutorId = id })));
             #endregion
 
             #region MapeoComentarios
