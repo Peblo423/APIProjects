@@ -29,6 +29,14 @@ namespace BibliotecaAPI.Utilidades
             // De LibroCreacionDto a Libro
             CreateMap<LibroCreacionDto, Libro>();
             #endregion
+
+            #region MapeoComentarios
+
+            CreateMap<Comentario,ComentarioDto>();
+            CreateMap<ComentarioCreacionDto, Comentario>();
+            CreateMap <ComentarioPatchDto, Comentario>().ReverseMap();
+
+            #endregion
         }
         private string MapNombreYApellidoAutor(Autor autor) => $"{autor.Nombres} {autor.Apellidos}";
 

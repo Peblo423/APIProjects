@@ -219,5 +219,131 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BibliotecaAPI.Controllers.ComentariosController",
+    "Method": "Get",
+    "RelativePath": "api/libros/{libroId}/comentarios",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "libroId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[BibliotecaAPI.DTOs.ComentarioDto, BibliotecaAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "BibliotecaAPI.Controllers.ComentariosController",
+    "Method": "Post",
+    "RelativePath": "api/libros/{libroId}/comentarios",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "libroId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "comentarioCreacionDto",
+        "Type": "BibliotecaAPI.DTOs.ComentarioCreacionDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BibliotecaAPI.Controllers.ComentariosController",
+    "Method": "Get",
+    "RelativePath": "api/libros/{libroId}/comentarios/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "libroId",
+        "Type": "",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "BibliotecaAPI.DTOs.ComentarioDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ],
+    "EndpointName": "ObtenerComentario"
+  },
+  {
+    "ContainingType": "BibliotecaAPI.Controllers.ComentariosController",
+    "Method": "Patch",
+    "RelativePath": "api/libros/{libroId}/comentarios/{id}",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "libroId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "patchDoc",
+        "Type": "Microsoft.AspNetCore.JsonPatch.Operations.Operation[]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BibliotecaAPI.Controllers.ComentariosController",
+    "Method": "Delete",
+    "RelativePath": "api/libros/{libroId}/comentarios/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "libroId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   }
 ]
