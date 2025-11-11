@@ -12,9 +12,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Área de servicios
 
 //builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-builder.Services.AddControllers()
-    .AddJsonOptions(opciones => 
-    opciones.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
+builder.Services.AddControllers().AddNewtonsoftJson();
 
 builder.Services.AddAutoMapper(cfg => { }, AppDomain.CurrentDomain.GetAssemblies());
 
