@@ -1,14 +1,10 @@
 ﻿using AutoMapper;
-using Azure;
 using BibliotecaAPI.Data;
 using BibliotecaAPI.DTOs;
 using BibliotecaAPI.Entities;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace BibliotecaAPI.Controllers
 {
@@ -27,24 +23,25 @@ namespace BibliotecaAPI.Controllers
 
         #region GET
         [HttpGet]
-        public async Task<IEnumerable<AutorDto>> Get()
+        public async Task<List<AutorDto>> Get()
         {
             var autores = await _context.Autores.ToListAsync();
-            IEnumerable<AutorDto> autoresDto = _mapper.Map<IEnumerable<AutorDto>>(autores);
+            List<AutorDto> autoresDto = _mapper.Map<List<AutorDto>>(autores);
             return autoresDto;
         }
 
         [HttpGet("{id:int}", Name = "ObtenerAutor")]
-        public async Task<ActionResult<AutorDto>> Get([FromRoute] int id)
+        public async Task<ActionResult<AutorConLibrosDto>> Get([FromRoute] int id)
         {
-            var autor = await _context.Autores
-                .Include(x => x.Libros)
-                .FirstOrDefaultAsync(x => x.Id == id);
+            Autor? autor = await _context.Autores
+                .Include(x => x.Libros) // Libros es una lista de AutorLibro
+                    .ThenInclude(x => x.Libro) // De cada AutorLibro saco el Libro
+                .FirstOrDefaultAsync(x => x.Id == id); // Este id corresponde a un Autor
             if (autor is null)
             {
                 return NotFound();
             }
-            AutorDto autorDto = _mapper.Map<AutorDto>(autor);
+            AutorConLibrosDto autorDto = _mapper.Map<AutorConLibrosDto>(autor);
             return autorDto;
         }
         #endregion
@@ -57,7 +54,7 @@ namespace BibliotecaAPI.Controllers
             _context.Add(autor);
             await _context.SaveChangesAsync();
             AutorDto autorDto = _mapper.Map<AutorDto>(autor);
-            return CreatedAtRoute("ObtenerAutor", new {id = autor.Id}, autor);
+            return CreatedAtRoute("ObtenerAutor", new {id = autor.Id}, autorDto);
         }
         #endregion
 

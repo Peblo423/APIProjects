@@ -337,3 +337,8 @@ C:\Users\dev6\source\repos\APIProjects\WebApplication1\WebApplication1\bin\Debug
 C:\Users\dev6\source\repos\APIProjects\WebApplication1\WebApplication1\bin\Debug\net8.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 C:\Users\dev6\source\repos\APIProjects\WebApplication1\WebApplication1\bin\Debug\net8.0\Newtonsoft.Json.dll
 C:\Users\dev6\source\repos\APIProjects\WebApplication1\WebApplication1\bin\Debug\net8.0\Newtonsoft.Json.Bson.dll
+C:\Users\pablo\source\repos\WebApplication1\WebApplication1\bin\Debug\net8.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\pablo\source\repos\WebApplication1\WebApplication1\bin\Debug\net8.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\pablo\source\repos\WebApplication1\WebApplication1\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\Users\pablo\source\repos\WebApplication1\WebApplication1\bin\Debug\net8.0\Newtonsoft.Json.Bson.dll
+C:\Users\pablo\source\repos\WebApplication1\WebApplication1\obj\Debug\net8.0\BibliotecaAPI.sourcelink.json
